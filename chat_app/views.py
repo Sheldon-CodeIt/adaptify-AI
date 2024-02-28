@@ -4,9 +4,15 @@ from .models import ChatBot
 from django.http import HttpResponseRedirect, JsonResponse
 import google.generativeai as genai
 from google.generativeai.types.generation_types import StopCandidateException
-# Create your views here.
+import os
+from dotenv import load_dotenv
 
-genai.configure(api_key="AIzaSyDjSqOVjm4nye7wzmPwtaIZ0C2zfMvloJs")
+load_dotenv()
+
+
+API_KEY = os.environ.get('API_KEY')
+
+genai.configure(api_key=API_KEY)
 
 @login_required
 def ask_question(request):
