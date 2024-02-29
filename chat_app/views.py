@@ -20,6 +20,7 @@ def ask_question(request):
         text = request.POST.get('text')
         try:
             model = genai.GenerativeModel("gemini-pro")
+            model = genai.GenerativeModel('gemini-pro')
             chat = model.start_chat()
             response = chat.send_message(text)
             user = request.user 
